@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 资料整理 · 信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf8f5;
+            font-family: "Georgia", "Noto Serif SC", "Times New Roman", serif;
+            color: #2d2a24;
+            line-height: 1.75;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-wrapper {
+            max-width: 820px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 杂志横幅 —— 近似扉页标题区 */
+        .hero {
+            margin-bottom: 3rem;
+            padding: 2.8rem 1.5rem 2.2rem;
+            background: #f3efe9;
+            border-left: 6px solid #a88b6f;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #3b3226;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #7a6e5d;
+            font-style: italic;
+            border-top: 1px solid #d6cdbc;
+            padding-top: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        .hero .subhead span {
+            background: #e2d9cb;
+            padding: 0.1rem 0.5rem;
+            font-style: normal;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: #4f4435;
+        }
+
+        /* 背景说明卡片 */
+        .background-note {
+            background: #f1ece3;
+            padding: 1.6rem 2rem;
+            margin-bottom: 2.8rem;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .background-note::before {
+            content: "⏺";
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            font-size: 1.2rem;
+            color: #b2967a;
+        }
+
+        .background-note p {
+            padding-left: 1.8rem;
+        }
+
+        .background-note strong {
+            font-weight: 600;
+            color: #4d3d2b;
+        }
+
+        /* 三段自然介绍 */
+        .intro-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+            margin-bottom: 3.6rem;
+        }
+
+        .intro-block {
+            border-bottom: 1px dashed #d9d0c1;
+            padding-bottom: 1.8rem;
+        }
+
+        .intro-block:last-child {
+            border-bottom: none;
+        }
+
+        .intro-block h2 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: #4e3f2e;
+            margin-bottom: 0.6rem;
+            letter-spacing: 1px;
+        }
+
+        .intro-block p {
+            margin-bottom: 0.4rem;
+        }
+
+        .intro-block .highlight-box {
+            background: #f8f4ed;
+            border-left: 4px solid #b9a690;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0 0.4rem;
+            font-size: 0.95rem;
+            color: #3f362a;
+        }
+
+        /* 引用 / 提示框 */
+        .pull-quote {
+            background: #eae3d8;
+            padding: 1.2rem 2rem;
+            margin: 2.8rem 0;
+            font-style: italic;
+            color: #51493c;
+            position: relative;
+            border-radius: 1px;
+        }
+
+        .pull-quote::after {
+            content: "❝";
+            font-size: 3.5rem;
+            color: #c5b5a0;
+            position: absolute;
+            right: 1.5rem;
+            bottom: 0.2rem;
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .tip-box {
+            background: #fffcf7;
+            border: 1px solid #dacfc0;
+            padding: 1.2rem 1.6rem;
+            margin: 2rem 0 2.8rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            font-size: 0.95rem;
+        }
+
+        .tip-box span.label {
+            display: inline-block;
+            background: #b8a386;
+            color: #fefcf9;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+        }
+
+        /* faq 摘要——非完整faq章节，只做点缀 */
+        .faq-mini {
+            background: #f7f3ec;
+            padding: 1.2rem 1.8rem;
+            margin: 2.2rem 0 3.2rem;
+            border-radius: 1px;
+        }
+
+        .faq-mini p {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-mini .question {
+            font-weight: 600;
+            color: #4a3d2c;
+        }
+
+        .faq-mini .answer {
+            padding-left: 1.2rem;
+            color: #4d4235;
+        }
+
+        /* 页尾访问提示 */
+        .footer-note {
+            margin-top: 2rem;
+            padding: 2rem 0 1.2rem;
+            border-top: 2px solid #dad0c0;
+            text-align: left;
+            font-size: 1rem;
+            color: #5b4f3e;
+        }
+
+        .footer-note a {
+            color: #5d4b34;
+            text-decoration: underline wavy #b8a386 1px;
+            text-underline-offset: 3px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .footer-note a:hover {
+            background: #e1d6c7;
+            text-decoration: underline wavy #7e6b53;
+        }
+
+        .footer-note .small-meta {
+            font-size: 0.8rem;
+            color: #8a7d6b;
+            margin-top: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 580px) {
+            body { padding: 1.2rem 1rem; }
+            .hero h1 { font-size: 2.1rem; }
+            .hero { padding: 2rem 1rem; }
+            .background-note { padding: 1.2rem 1.2rem; }
+            .background-note p { padding-left: 1.2rem; }
+            .pull-quote { padding: 1rem 1.2rem; }
+            .tip-box { padding: 1rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- 首页横幅 / 杂志标题区 -->
+    <section class="hero">
+        <h1>爱游戏</h1>
+        <div class="subhead">
+            资料整理 · 信息索引 · 日常存档
+            <span>专题</span>
+        </div>
+    </section>
+
+    <!-- 背景说明 -->
+    <div class="background-note">
+        <p><strong>关于这个索引</strong> —— 这里没有什么排行榜或评测，只有从各处收集来的片段、笔记和链接。把 <a href="https://session-ayx.com.cn">爱游戏</a> 当作一个起始点，适合随手翻翻，也适合顺着线索自己深挖。记录本身就有价值。</p>
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="intro-grid">
+        <div class="intro-block">
+            <h2>一 · 存档与脉络</h2>
+            <p>很早以前就开始往笔记本里丢各种游戏相关的截图、台词、版本号、社区讨论摘要。后来东西多了，就想着不如整理成一个可以按图索骥的小型资料页。每个条目背后可能是一篇老文章、一段访谈，或者某个论坛里不起眼的回帖。</p>
+            <div class="highlight-box">
+                “资料整理的核心不是收集，是找到重新看见的路径。” —— 某次笔记首页的涂鸦
+            </div>
+        </div>
+
+        <div class="intro-block">
+            <h2>二 · 索引而非目录</h2>
+            <p>比起做成一个完备的百科，我更希望它像一本旧杂志的索引页：你知道哪里大概有什么，但每次翻都能撞见之前没注意的东西。关于 <a href="https://session-ayx.com.cn">爱游戏</a> 这个站点，目前收录了几个主要的方向：作品年表、开发手记摘录、以及一些有趣的本地化对照。还在慢慢补充。</p>
+        </div>
+
+        <div class="intro-block">
+            <h2>三 · 纸质感与数字边角</h2>
+            <p>我偏好把数字资料做出一点纸本的气质——比如用米白背景、衬线字体、偶尔加个引用框。不是复古，只是觉得这样更容易让信息沉下来。页面里那些提示框和引文，算是给阅读留的便签条。</p>
+        </div>
+    </div>
+
+    <!-- 引用块 -->
+    <div class="pull-quote">
+        如果我们把玩游戏的时间也看作一种笔记行为，那么整理本身就是另一种游玩。
+    </div>
+
+    <!-- tip 提示框 / 使用场景 -->
+    <div class="tip-box">
+        <span class="label">使用场景</span>
+        <p>如果你在找某个老游戏的中文译名对照，或者想看看同一款游戏在不同地区的封面差异，可以翻翻索引。如果只是路过，随便点开一个词条也欢迎。这里的资料不做排名，不写攻略，只负责指路和存档。</p>
+    </div>
+
+    <!-- FAQ 摘要（非完整FAQ，但保留问答感） -->
+    <div class="faq-mini">
+        <p class="question">Q: 这个索引会持续更新吗？</p>
+        <p class="answer">A: 随缘但认真。有新发现就会加进去，频率不高，但每次更新都会补上来源备注。</p>
+        <p class="question" style="margin-top: 0.8rem;">Q: 我可以贡献自己找到的资料吗？</p>
+        <p class="answer">A: 暂时没有开放编辑入口，但欢迎通过站内线索自己探索——整理本身也是一种乐趣。</p>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <footer class="footer-note">
+        <p>如果你对资料整理或某个游戏的背景脉络感兴趣，不妨直接前往 <a href="https://session-ayx.com.cn">爱游戏</a> 慢慢翻阅。那里存放着更多未能在这一页展开的记录和片段。</p>
+        <div class="small-meta">—— 基于日常笔记 · 最后修订 2025 · 索引版本 · 生活化存档</div>
+    </footer>
+</div>
+</body>
+</html>
